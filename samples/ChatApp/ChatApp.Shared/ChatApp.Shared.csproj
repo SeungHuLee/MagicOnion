@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,7 +33,7 @@
     <PropertyGroup>
       <_MagicOnionGeneratorArguments>-i ./ChatApp.Shared.csproj -o ../ChatApp.Unity/Assets/Scripts/Generated/MagicOnion.Generated.cs</_MagicOnionGeneratorArguments>
     </PropertyGroup>
-    <Exec Command="dotnet run -f net6.0 --project ../../../src/MagicOnion.Generator -- $(_MagicOnionGeneratorArguments)" />
+    <Exec Command="dotnet run -f net8.0 --project ../../../src/MagicOnion.Generator -- $(_MagicOnionGeneratorArguments)" />
   </Target>
 
   <!-- If you want to use MagicOnion.MSBuild.Tasks instead of MagicOnion.Generator (moc), use `MagicOnionGenerator` task. -->

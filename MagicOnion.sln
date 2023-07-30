@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1987061F-897
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{7682EFFC-681C-4DCC-B5E7-D8449E42DAC9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion", "src\MagicOnion\MagicOnion.csproj", "{C79CE0BF-ED4C-47BE-822E-E82CF83FC68A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5A3F5158-7B17-4586-9885-9E60C1393185}"
@@ -30,11 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Generator", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.GeneratorCore", "src\MagicOnion.GeneratorCore\MagicOnion.GeneratorCore.csproj", "{EE768243-100A-4075-8823-C49EA086680A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{42EBB7E4-52D7-4E57-80AD-79FDD4900E13}"
-	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatApp.Shared", "samples\ChatApp\ChatApp.Shared\ChatApp.Shared.csproj", "{5CDEE44D-8AC2-4E7C-90CC-669E336F2D15}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ChatApp", "ChatApp", "{FEE2B9AB-A1D0-41BA-A172-FC95935542DF}"
@@ -51,8 +44,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Generator.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Server", "src\MagicOnion.Server\MagicOnion.Server.csproj", "{72D2C01C-765C-4FE1-89CA-28244DEC7C37}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox.AspNetCore", "sandbox\Sandbox.AspNetCore\Sandbox.AspNetCore.csproj", "{E70D0B00-0524-4EBE-B290-64DDB6B323F9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Client", "src\MagicOnion.Client\MagicOnion.Client.csproj", "{4DE802A2-426D-4074-B9F3-710980B3EDA8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Shared", "src\MagicOnion.Shared\MagicOnion.Shared.csproj", "{45A800CF-C0D0-40A8-B070-9AC2C3E4312F}"
@@ -62,14 +53,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Server.HttpGateway", "src\MagicOnion.Server.HttpGateway\MagicOnion.Server.HttpGateway.csproj", "{34C724ED-7459-4F62-855D-90C276A6F5EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Server.Tests", "tests\MagicOnion.Server.Tests\MagicOnion.Server.Tests.csproj", "{E3F88CE3-F892-42AB-9D92-178BC9AD46FD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{A8550C24-2486-49DA-8D1A-DB6BBB2E9905}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build-canary.yml = .github\workflows\build-canary.yml
-		.github\workflows\build-debug.yml = .github\workflows\build-debug.yml
-		.github\workflows\build-docs.yml = .github\workflows\build-docs.yml
-		.github\workflows\build-release.yml = .github\workflows\build-release.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B5617CC1-55FD-4F77-BA75-9450474C6527}"
 EndProject
@@ -101,7 +84,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Serialization.Me
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Serialization.MemoryPack.Tests", "tests\MagicOnion.Serialization.MemoryPack.Tests\MagicOnion.Serialization.MemoryPack.Tests.csproj", "{A5A4ED92-71AD-410E-9310-A8BF48D32126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicOnion.Server.Redis.Tests", "tests\MagicOnion.Server.Redis.Tests\MagicOnion.Server.Redis.Tests.csproj", "{95C3B040-BD5A-4A80-B5D4-26CAA21B4829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Server.Redis.Tests", "tests\MagicOnion.Server.Redis.Tests\MagicOnion.Server.Redis.Tests.csproj", "{95C3B040-BD5A-4A80-B5D4-26CAA21B4829}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicOnion.Server.OpenTelemetry", "src\MagicOnion.Server.OpenTelemetry\MagicOnion.Server.OpenTelemetry.csproj", "{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,10 +138,6 @@ Global
 		{72D2C01C-765C-4FE1-89CA-28244DEC7C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D2C01C-765C-4FE1-89CA-28244DEC7C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72D2C01C-765C-4FE1-89CA-28244DEC7C37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E70D0B00-0524-4EBE-B290-64DDB6B323F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E70D0B00-0524-4EBE-B290-64DDB6B323F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E70D0B00-0524-4EBE-B290-64DDB6B323F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E70D0B00-0524-4EBE-B290-64DDB6B323F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DE802A2-426D-4074-B9F3-710980B3EDA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4DE802A2-426D-4074-B9F3-710980B3EDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DE802A2-426D-4074-B9F3-710980B3EDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -229,6 +210,10 @@ Global
 		{95C3B040-BD5A-4A80-B5D4-26CAA21B4829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C3B040-BD5A-4A80-B5D4-26CAA21B4829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C3B040-BD5A-4A80-B5D4-26CAA21B4829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,13 +232,11 @@ Global
 		{5948D82F-EA56-4266-8718-7508C26BFFD4} = {EBF51D3A-A093-4177-865A-D17F816EDEF5}
 		{E5415D78-63D2-4573-BA53-E923506A9C30} = {7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}
 		{72D2C01C-765C-4FE1-89CA-28244DEC7C37} = {1987061F-8970-4018-8D58-6932961C9EB4}
-		{E70D0B00-0524-4EBE-B290-64DDB6B323F9} = {7682EFFC-681C-4DCC-B5E7-D8449E42DAC9}
 		{4DE802A2-426D-4074-B9F3-710980B3EDA8} = {1987061F-8970-4018-8D58-6932961C9EB4}
 		{45A800CF-C0D0-40A8-B070-9AC2C3E4312F} = {1987061F-8970-4018-8D58-6932961C9EB4}
 		{80127E7E-FB71-4F68-B52B-2905AD39029B} = {1987061F-8970-4018-8D58-6932961C9EB4}
 		{34C724ED-7459-4F62-855D-90C276A6F5EA} = {1987061F-8970-4018-8D58-6932961C9EB4}
 		{E3F88CE3-F892-42AB-9D92-178BC9AD46FD} = {7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}
-		{A8550C24-2486-49DA-8D1A-DB6BBB2E9905} = {42EBB7E4-52D7-4E57-80AD-79FDD4900E13}
 		{B5617CC1-55FD-4F77-BA75-9450474C6527} = {7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}
 		{4D5E8486-9A0D-444A-922B-1D94FD8A820A} = {B5617CC1-55FD-4F77-BA75-9450474C6527}
 		{BC29EA94-6C52-4FAA-8F26-9346DB85C58F} = {B5617CC1-55FD-4F77-BA75-9450474C6527}
@@ -269,6 +252,7 @@ Global
 		{56C784C7-3F18-4443-B7B0-03607ED14308} = {1987061F-8970-4018-8D58-6932961C9EB4}
 		{A5A4ED92-71AD-410E-9310-A8BF48D32126} = {7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}
 		{95C3B040-BD5A-4A80-B5D4-26CAA21B4829} = {7ACC27E8-8FBE-4807-B91F-B89AF3CFF7E0}
+		{30A2700B-D1FB-44EE-B75B-5BDEEFA8EEB7} = {1987061F-8970-4018-8D58-6932961C9EB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5B2E7E3-B727-40A1-BE68-7BAC9B9DE2FE}

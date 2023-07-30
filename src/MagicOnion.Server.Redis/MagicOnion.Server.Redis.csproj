@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <OutputType>Library</OutputType>
         <LangVersion>default</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -21,9 +21,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MessagePack" Version="2.2.85" />
-        <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
-        <PackageReference Include="System.Buffers" Version="4.5.0" />
+        <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+        <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+        <PackageReference Include="System.Buffers" Version="4.5.1" />
     </ItemGroup>
 
 
