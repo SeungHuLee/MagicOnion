@@ -1,15 +1,19 @@
 # This is my forked version of MagicOnion.
-This fork is only for fun. So It is very, very experimental. Will do following:
+This fork is just for fun. So It is very, very experimental. Will do following:
 - Renewal of chat sample. (It's already done.)
 - Use all Cysharp's infinity stones with VContainer 
-  - (Except UniRx. IT IS DEPRECATED. ADMIT IT. OR AT LEAST SHARE INTERNAL MAINTAINED VERSION.)
+  - (Except UniRx. IT IS DEPRECATED. ADMIT IT. OR AT LEAST PLEASE ANYONE SHARE INTERNAL MAINTAINED VERSION?)
   - If I have left-over time, I'll try using dotnet/reactive instead.
 - .NET 8 on server side
 - Completely replace MessagePack-CSharp to MemoryPack in both Unity side and server side.
 - Completely replace legacy grpc c core to grpc-dotnet
-- Experiment using grpc-dotnet over HTTP3
+- Experiment using YetAnotherHttpHandler (grpc-dotnet)
   - reqwest's experimental HTTP3
   - quiche
+- Experiment using MagicPhysX
+- Experiment using NATS.io V2
+- Experiment using SOA, SIMDLINQ
+
 # MagicOnion
 ![build-debug](https://github.com/Cysharp/MagicOnion/workflows/build-debug/badge.svg) ![build-canary](https://github.com/Cysharp/MagicOnion/workflows/build-canary/badge.svg) ![build-release](https://github.com/Cysharp/MagicOnion/workflows/build-release/badge.svg) [![Releases](https://img.shields.io/github/release/Cysharp/MagicOnion.svg)](https://github.com/Cysharp/MagicOnion/releases)
 
