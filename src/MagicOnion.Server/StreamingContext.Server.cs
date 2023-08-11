@@ -1,9 +1,8 @@
 using Grpc.Core;
-using MagicOnion.Server.Diagnostics;
 using MessagePack;
+using MagicOnion.Server.Diagnostics;
 
 namespace MagicOnion.Server;
-
 
 public class ServerStreamingContext<TResponse> : IAsyncStreamWriter<TResponse>
 {
@@ -34,13 +33,13 @@ public class ServerStreamingContext<TResponse> : IAsyncStreamWriter<TResponse>
 
     public ServerStreamingResult<TResponse> Result()
     {
-        return default(ServerStreamingResult<TResponse>); // dummy
+        return default; // dummy
     }
 
     public ServerStreamingResult<TResponse> ReturnStatus(StatusCode statusCode, string detail)
     {
         context.CallContext.Status = new Status(statusCode, detail);
 
-        return default(ServerStreamingResult<TResponse>); // dummy
+        return default; // dummy
     }
 }

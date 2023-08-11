@@ -2,8 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
-        <LangVersion>latest</LangVersion>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <AssemblyName>moc</AssemblyName>
         <IsPackable>true</IsPackable>
         <PackAsTool>true</PackAsTool>

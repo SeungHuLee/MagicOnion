@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFrameworks>net8.0</TargetFrameworks>
         <OutputType>Library</OutputType>
-        <LangVersion>default</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
         <SignAssembly>true</SignAssembly>
@@ -13,7 +12,7 @@
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <NoWarn>1701;1702;1705;1591</NoWarn>
         <DefineConstants>NON_UNITY</DefineConstants>
-        <!--<nullable>enable</nullable>-->
+        <nullable>enable</nullable>
 
         <!-- NuGet -->
         <PackageId>MagicOnion.Server.HttpGateway</PackageId>

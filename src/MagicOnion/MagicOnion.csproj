@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
         <OutputType>Library</OutputType>
         <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
         <AssemblyOriginatorKeyFile>opensource.snk</AssemblyOriginatorKeyFile>
@@ -19,7 +19,6 @@
 
     <ItemGroup>
         <None Include="Icon.png" Pack="true" PackagePath="/" />
-        <None Include="lib\**\*.*" Pack="true" PackagePath="lib" />
     </ItemGroup>
 
   <ItemGroup>

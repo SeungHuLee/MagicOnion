@@ -21,7 +21,7 @@ public class ClientStreamingContext<TRequest, TResponse> : IAsyncStreamReader<TR
 
     public TRequest Current { get; private set; } = default!; /* lateinit */
 
-    public async Task<bool> MoveNext(CancellationToken cancellationToken = default(CancellationToken))
+    public async Task<bool> MoveNext(CancellationToken cancellationToken = default)
     {
         if (await inner.MoveNext(cancellationToken))
         {
@@ -65,6 +65,6 @@ public class ClientStreamingContext<TRequest, TResponse> : IAsyncStreamReader<TR
     {
         context.CallContext.Status = new Status(statusCode, detail);
 
-        return default(ClientStreamingResult<TRequest, TResponse>); // dummy
+        return default; // dummy
     }
 }

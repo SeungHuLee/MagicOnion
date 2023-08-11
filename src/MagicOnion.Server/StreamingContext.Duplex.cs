@@ -1,6 +1,5 @@
 using Grpc.Core;
 using MagicOnion.Server.Diagnostics;
-using MessagePack;
 
 namespace MagicOnion.Server;
 
@@ -34,7 +33,7 @@ public class DuplexStreamingContext<TRequest, TResponse> : IAsyncStreamReader<TR
     public TRequest Current { get; private set; } = default!; /* lateinit */
 
     /// <summary>IAsyncStreamReader Methods.</summary>
-    public async Task<bool> MoveNext(CancellationToken cancellationToken = default(CancellationToken))
+    public async Task<bool> MoveNext(CancellationToken cancellationToken = default)
     {
         if (await innerReader.MoveNext(cancellationToken))
         {
@@ -66,13 +65,13 @@ public class DuplexStreamingContext<TRequest, TResponse> : IAsyncStreamReader<TR
 
     public DuplexStreamingResult<TRequest, TResponse> Result()
     {
-        return default(DuplexStreamingResult<TRequest, TResponse>); // dummy
+        return default; // dummy
     }
 
     public DuplexStreamingResult<TRequest, TResponse> ReturnStatus(StatusCode statusCode, string detail)
     {
         context.CallContext.Status = new Status(statusCode, detail);
 
-        return default(DuplexStreamingResult<TRequest, TResponse>); // dummy
+        return default; // dummy
     }
 }

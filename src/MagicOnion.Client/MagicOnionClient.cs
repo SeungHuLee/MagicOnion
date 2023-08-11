@@ -1,6 +1,6 @@
+using System;
 using Grpc.Core;
 using MagicOnion.Serialization;
-using System;
 
 namespace MagicOnion.Client
 {

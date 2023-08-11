@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\MagicOnion\opensource.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>NON_UNITY</DefineConstants>
+    <LangVersion>9.0</LangVersion>
 
     <PackageId>MagicOnion.Abstractions</PackageId>
     <Description>MagicOnion interfaces and abstractions for server and client.
@@ -17,7 +17,7 @@ MagicOnion.IgnoreAttribute</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.Core.Api" Version="2.55.0" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.56.0-pre1" />
     <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
   </ItemGroup>
 

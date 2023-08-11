@@ -1,9 +1,8 @@
 using Grpc.Core;
+using System.Reflection;
 using MagicOnion.Serialization;
 using MagicOnion.Server.Diagnostics;
-using MessagePack;
 using System.Collections.Concurrent;
-using System.Reflection;
 
 namespace MagicOnion.Server;
 
@@ -34,7 +33,7 @@ public interface IServiceContext
 
 public class ServiceContext : IServiceContext
 {
-    internal static AsyncLocal<ServiceContext?> currentServiceContext = new AsyncLocal<ServiceContext?>();
+    internal static AsyncLocal<ServiceContext> currentServiceContext = new AsyncLocal<ServiceContext>();
 
     /// <summary>
     /// Get Current ServiceContext. This property requires to MagicOnionOptions.Enable
