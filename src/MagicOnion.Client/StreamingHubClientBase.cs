@@ -43,7 +43,7 @@ namespace MagicOnion.Client
             this.callInvoker = callInvoker ?? throw new ArgumentNullException(nameof(callInvoker));
             this.host = host;
             this.option = option;
-            this.messageSerializer = serializerProvider.Create(MethodType.DuplexStreaming, null) ?? throw new ArgumentNullException(nameof(serializerProvider));
+            this.messageSerializer = serializerProvider?.Create(MethodType.DuplexStreaming, null) ?? throw new ArgumentNullException(nameof(serializerProvider));
             this.logger = logger ?? NullMagicOnionClientLogger.Instance;
         }
 
@@ -177,7 +177,7 @@ namespace MagicOnion.Client
                 }
                 finally
                 {
-                    waitForDisconnect.TrySetResult(false);
+                    waitForDisconnect.TrySetResult(null);
                 }
             }
         }

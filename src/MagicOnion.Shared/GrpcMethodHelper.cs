@@ -1,16 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 using Grpc.Core;
+using MessagePack;
+using System.Reflection;
 using MagicOnion.Internal;
 using MagicOnion.Serialization;
-using MessagePack;
 
 namespace MagicOnion
 {
     public static class GrpcMethodHelper
     {
+        const byte NilByte = 0xc0;
         public sealed class MagicOnionMethod<TRequest, TResponse, TRawRequest, TRawResponse>
         {
             public Method<TRawRequest, TRawResponse> Method { get; }
@@ -119,7 +118,7 @@ namespace MagicOnion
         public static Marshaller<Box<Nil>> IgnoreNilMarshaller { get; } = new Marshaller<Box<Nil>>(
                 serializer: (obj, ctx) =>
                 {
-                    ReadOnlySpan<byte> unsafeNilBytes = new [] { MessagePackCode.Nil };
+                    ReadOnlySpan<byte> unsafeNilBytes = new [] { NilByte };
 
                     var writer = ctx.GetBufferWriter();
                     var buffer = writer.GetSpan(unsafeNilBytes.Length); // Write `Nil` as `byte[]` to the buffer.

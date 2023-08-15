@@ -28,7 +28,7 @@ namespace MagicOnion.Client
         /// <typeparam name="T">A MagicOnion service interface type.</typeparam>
         /// <param name="factory">A MagicOnionClient factory of specified service type.</param>
         /// <returns>The value indicates whether a factory was found or not.</returns>
-        bool TryGetFactory<T>(out MagicOnionClientFactoryDelegate<T>? factory) where T : IService<T>;
+        bool TryGetFactory<T>(out MagicOnionClientFactoryDelegate<T> factory) where T : IService<T>;
     }
     
     public class ImmutableMagicOnionClientFactoryProvider : IMagicOnionClientFactoryProvider
@@ -45,7 +45,7 @@ namespace MagicOnion.Client
             return new ImmutableMagicOnionClientFactoryProvider(providers.Append(provider).ToArray());
         }
 
-        public bool TryGetFactory<T>(out MagicOnionClientFactoryDelegate<T>? factory) where T : IService<T>
+        public bool TryGetFactory<T>(out MagicOnionClientFactoryDelegate<T> factory) where T : IService<T>
         {
             foreach (var provider in providers)
             {

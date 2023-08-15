@@ -14,12 +14,12 @@ public interface IStreamingServiceContext : IServiceContext
 
 public interface IServiceContextWithRequestStream<T> : IStreamingServiceContext
 {
-    IAsyncStreamReader<T> RequestStream { get; }
+    IAsyncStreamReader<T>? RequestStream { get; }
 }
 
 public interface IServiceContextWithResponseStream<T> : IStreamingServiceContext
 {
-    IServerStreamWriter<T> ResponseStream { get; }
+    IServerStreamWriter<T>? ResponseStream { get; }
     void QueueResponseStreamWrite(in T value);
 }
 
@@ -30,8 +30,8 @@ internal class StreamingServiceContext<TRequest, TResponse> : ServiceContext, IS
 {
     readonly Lazy<QueuedResponseWriter<TResponse>> streamingResponseWriter;
 
-    public IAsyncStreamReader<TRequest> RequestStream { get; }
-    public IServerStreamWriter<TResponse> ResponseStream { get; }
+    public IAsyncStreamReader<TRequest>? RequestStream { get; }
+    public IServerStreamWriter<TResponse>? ResponseStream { get; }
 
     // used in StreamingHub
     public bool IsDisconnected { get; private set; }
@@ -46,8 +46,8 @@ internal class StreamingServiceContext<TRequest, TResponse> : ServiceContext, IS
         IMagicOnionLogger logger,
         MethodHandler methodHandler,
         IServiceProvider serviceProvider,
-        IAsyncStreamReader<TRequest> requestStream,
-        IServerStreamWriter<TResponse> responseStream
+        IAsyncStreamReader<TRequest>? requestStream,
+        IServerStreamWriter<TResponse>? responseStream
     ) : base(serviceType, methodInfo, attributeLookup, methodType, context, messageSerializer, logger, methodHandler, serviceProvider)
     {
         RequestStream = requestStream;

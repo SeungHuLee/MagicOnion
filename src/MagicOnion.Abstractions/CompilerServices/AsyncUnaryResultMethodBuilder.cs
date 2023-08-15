@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Security;
-using System.Threading.Tasks;
 using MessagePack;
 
 namespace MagicOnion.CompilerServices

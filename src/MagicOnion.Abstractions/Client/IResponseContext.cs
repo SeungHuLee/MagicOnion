@@ -1,8 +1,5 @@
-﻿using Grpc.Core;
-using MessagePack;
+using Grpc.Core;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MagicOnion.Client

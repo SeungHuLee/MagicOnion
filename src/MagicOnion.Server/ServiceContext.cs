@@ -33,7 +33,7 @@ public interface IServiceContext
 
 public class ServiceContext : IServiceContext
 {
-    internal static AsyncLocal<ServiceContext> currentServiceContext = new AsyncLocal<ServiceContext>();
+    internal static AsyncLocal<ServiceContext?> currentServiceContext = new AsyncLocal<ServiceContext>();
 
     /// <summary>
     /// Get Current ServiceContext. This property requires to MagicOnionOptions.Enable
