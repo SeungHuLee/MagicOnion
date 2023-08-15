@@ -211,15 +211,16 @@ dotnet add package MagicOnion
     - [Support for Unity client](#support-for-unity-client)
         - [iOS build with gRPC](#ios-build-with-grpc)
         - [Stripping debug symbols from ios/libgrpc.a](#stripping-debug-symbols-from-ioslibgrpca)
-        - [Stripping debug symbols from libgrpc_csharp_ext.so](#stripping-debug-symbols-from-libgrpccsharpextso)
-        - [Workaround for il2cpp + Windows Build failure](#workaround-for-il2cpp--windows-build-failure)
+        - [Stripping debug symbols from libgrpc_csharp_ext.so](#stripping-debug-symbols-from-libgrpc_csharp_extso)
+        - [Workaround for il2cpp + Windows/Linux Build failure](#workaround-for-il2cpp--windowslinux-build-failure)
     - [gRPC Keepalive](#grpc-keepalive)
 - [HTTPS (TLS)](#https-tls)
 - [Deployment](#deployment)
 - Integrations
     - [Swagger](#swagger)
 - Advanced
-    - [MagicOnionOption/Logging](#magiconionoptionlogging)
+    - [MagicOnionOption](#magiconionoption)
+    - [Internal Logging](#internal-logging)
     - [Raw gRPC APIs](#raw-grpc-apis)
     - [Zero deserialization mapping](#zero-deserialization-mapping)
 - Experimentals
@@ -1217,8 +1218,8 @@ $ cd ${UNITY_PATH}/Plugins/Grpc.Core/runtime/android/${TARGET_ARCH}
 $ strip.exe libgrpc_csharp_ext.so
 ```
 
-## Workaround for il2cpp + Windows Build failure
-If you do a Windows il2cpp build with the gRPC daily build, the build may fail with following error messages.
+## Workaround for il2cpp + Windows/Linux Build failure
+If you do a Windows/Linux il2cpp build with the gRPC daily build, the build may fail with following error messages.
 
 ```
 20AAB1A42EE7F9CA535031CD347327DE.obj : error LNK2019: unresolved external symbol dlopen referenced in function Mono_dlopen_m7F2DE2CD0870AB15EEA4E0A0BA6C47044E74BB67
@@ -1228,7 +1229,7 @@ C:\Path\To\MyProject\Library\il2cpp_cache\linkresult_C1E926E002526A4D380E4B12B6B
 ```
 
 The reason is because some native function (but not nessessary at the runtime) not found on Windows il2cpp build.
-You can avoid this problem by adding the following code to `grpc_csharp_ext_dummy_stubs.c`.
+You can avoid this problem by adding the following code to `Assets/Pugins/Grpc.Core/runtimes/grpc_csharp_ext_dummy_stubs.c`. Then enable platform you needed, `Windows x86/x64` and/or `Linux x64`.
 
 ```c
 void* dlopen(const char* filename, int flags) {
