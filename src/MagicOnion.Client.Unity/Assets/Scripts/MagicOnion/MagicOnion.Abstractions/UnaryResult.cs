@@ -166,13 +166,6 @@ namespace MagicOnion
         /// </summary>
         public static UnaryResult<T> FromResult<T>(Task<T> task)
             => new UnaryResult<T>(task);
-
-        /// <summary>
-        /// Gets the result that contains <see cref="F:MessagePack.Nil.Default"/> as the result value.
-        /// </summary>
-        [Obsolete("Use `UnaryResult` or `UnaryResult.FromResult(Nil.Default)` instead.")]
-        public static UnaryResult<Nil> Nil
-            => new UnaryResult<Nil>(MessagePack.Nil.Default);
     }
 
     /// <summary>
@@ -198,7 +191,7 @@ namespace MagicOnion
         public UnaryResult(Task<TResponse> rawTaskValue)
         {
             this.hasRawValue = true;
-            this.rawValue = default(TResponse);
+            this.rawValue = default;
             this.rawTaskValue = rawTaskValue ?? throw new ArgumentNullException(nameof(rawTaskValue));
             this.response = null;
         }
@@ -206,7 +199,7 @@ namespace MagicOnion
         public UnaryResult(Task<IResponseContext<TResponse>> response)
         {
             this.hasRawValue = false;
-            this.rawValue = default(TResponse);
+            this.rawValue = default;
             this.rawTaskValue = null;
             this.response = response ?? throw new ArgumentNullException(nameof(response));
         }

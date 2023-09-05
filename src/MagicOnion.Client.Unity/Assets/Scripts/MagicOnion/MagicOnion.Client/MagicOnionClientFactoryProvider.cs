@@ -13,7 +13,7 @@ namespace MagicOnion.Client
         /// Gets or set the MagicOnionClient factory provider to use by default.
         /// </summary>
         public static IMagicOnionClientFactoryProvider Default { get; set; }
-#if ((!ENABLE_IL2CPP || UNITY_EDITOR) && !NET_STANDARD_2_0)
+#if ((!ENABLE_IL2CPP || UNITY_EDITOR) && !NET_STANDARD_2_1)
             = DynamicMagicOnionClientFactoryProvider.Instance;
 #else
             = DynamicNotSupportedMagicOnionClientFactoryProvider.Instance;
@@ -35,7 +35,7 @@ namespace MagicOnion.Client
         /// <returns>The value indicates whether a factory was found or not.</returns>
         bool TryGetFactory<T>(out MagicOnionClientFactoryDelegate<T> factory) where T : IService<T>;
     }
-    
+
     public class ImmutableMagicOnionClientFactoryProvider : IMagicOnionClientFactoryProvider
     {
         readonly IMagicOnionClientFactoryProvider[] providers;
@@ -77,7 +77,7 @@ namespace MagicOnion.Client
         }
     }
 
-#if ((!ENABLE_IL2CPP || UNITY_EDITOR) && !NET_STANDARD_2_0)
+#if ((!ENABLE_IL2CPP || UNITY_EDITOR) && !NET_STANDARD_2_1)
     /// <summary>
     /// Provides to get a MagicOnionClient factory of the specified service type. The provider is backed by DynamicMagicOnionClientBuilder.
     /// </summary>

@@ -1,7 +1,6 @@
-﻿#if NON_UNITY || !NET_STANDARD_2_0
+#if NON_UNITY || !NET_STANDARD_2_1
 
 using System;
-using System.Reflection;
 using System.Reflection.Emit;
 
 namespace MagicOnion.Utils

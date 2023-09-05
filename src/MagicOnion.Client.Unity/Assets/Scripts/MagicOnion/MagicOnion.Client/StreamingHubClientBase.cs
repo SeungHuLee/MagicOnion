@@ -1,16 +1,13 @@
-using Grpc.Core;
-using MessagePack;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
-using MagicOnion.Utils;
+using System.Linq;
+using System.Buffers;
 using System.Threading;
 using System.Threading.Tasks;
-using MagicOnion.Server;
-using System.Buffers;
-using System.Linq;
-using MagicOnion.Client.Internal;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using Grpc.Core;
+using MessagePack;
+using MagicOnion.Utils;
 using MagicOnion.Serialization;
 
 namespace MagicOnion.Client
@@ -28,7 +25,7 @@ namespace MagicOnion.Client
         readonly CallInvoker callInvoker;
         readonly IMagicOnionClientLogger logger;
         readonly IMagicOnionSerializer messageSerializer;
-        readonly AsyncLock asyncLock = new AsyncLock();
+        readonly AsyncLock asyncLock = new();
 
         IClientStreamWriter<byte[]> writer;
         IAsyncStreamReader<byte[]> reader;
@@ -38,8 +35,8 @@ namespace MagicOnion.Client
         TaskCompletionSource<object> waitForDisconnect = new TaskCompletionSource<object>();
 
         // {messageId, TaskCompletionSource}
-        ConcurrentDictionary<int, ITaskCompletion> responseFutures = new ConcurrentDictionary<int, ITaskCompletion>();
-        protected CancellationTokenSource cts = new CancellationTokenSource();
+        ConcurrentDictionary<int, ITaskCompletion> responseFutures = new();
+        protected CancellationTokenSource cts = new();
         int messageId = 0;
         bool disposed;
 
@@ -222,7 +219,7 @@ namespace MagicOnion.Client
                 if (responseFutures.TryRemove(messageId, out var future))
                 {
                     var statusCode = messagePackReader.ReadInt32();
-                    var detail = messagePackReader.ReadString();
+                    var detail = messagePackReader.ReadString() ?? string.Empty;
                     var offset = (int)messagePackReader.Consumed;
                     var error = messagePackReader.ReadString();
                     var ex = default(RpcException);

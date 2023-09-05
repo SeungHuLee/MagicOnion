@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>net8.0</TargetFrameworks>
+        <LangVersion>preview</LangVersion>
         <RootNamespace>MagicOnion.Generator</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>

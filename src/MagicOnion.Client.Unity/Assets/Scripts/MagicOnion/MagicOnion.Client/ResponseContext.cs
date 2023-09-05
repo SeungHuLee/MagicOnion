@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Grpc.Core;
-using MagicOnion.Internal;
 
 namespace MagicOnion.Client
 {
@@ -62,7 +61,7 @@ namespace MagicOnion.Client
             => hasMetadataAndStatus
                 ? Task.FromResult(responseHeaders)
                 : inner.ResponseHeadersAsync;
-        public override  Metadata GetTrailers()
+        public override Metadata GetTrailers()
             => hasMetadataAndStatus
                 ? trailers
                 : inner.GetTrailers();
