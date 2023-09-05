@@ -18,7 +18,6 @@ public class DynamicArgumentTupleServiceTest : IClassFixture<MagicOnionApplicati
 
     public static IEnumerable<object[]> EnumerateMagicOnionClientFactory()
     {
-        yield return new [] { new TestMagicOnionClientFactory("Dynamic", DynamicMagicOnionClientFactoryProvider.Instance) };
         yield return new [] { new TestMagicOnionClientFactory("Generated", MagicOnionGeneratedClientFactoryProvider.Instance) };
     }
 

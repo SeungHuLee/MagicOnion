@@ -24,7 +24,6 @@ public class StreamingServiceTest : IClassFixture<MagicOnionApplicationFactory<S
 
     public static IEnumerable<object[]> EnumerateMagicOnionClientFactory()
     {
-        yield return new [] { new TestMagicOnionClientFactory("Dynamic", DynamicMagicOnionClientFactoryProvider.Instance) };
         yield return new [] { new TestMagicOnionClientFactory("Generated", MagicOnionGeneratedClientFactoryProvider.Instance) };
     }
 

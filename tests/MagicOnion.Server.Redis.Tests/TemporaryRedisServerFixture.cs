@@ -1,21 +1,14 @@
 using System.Net.Sockets;
 using System.Net;
-using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Containers;
+using Testcontainers.Redis;
 
 namespace MagicOnion.Server.Redis.Tests;
 
 public sealed class TemporaryRedisServerFixture : IAsyncLifetime
 {
-    const string redisImage = "redis:7.2.0";
-
     const ushort redisPort = 6379;
 
-    readonly TestcontainersContainer container = new TestcontainersBuilder<TestcontainersContainer>()
-        .WithImage(redisImage)
-        .WithPortBinding(GetAvailableListenerPort(), redisPort)
-        .WithWaitStrategy(Wait.ForUnixContainer().UntilCommandIsCompleted("redis-cli", "ping"))
-        .Build();
+    readonly RedisContainer container = new RedisBuilder().Build();
 
     public string GetConnectionString()
     {

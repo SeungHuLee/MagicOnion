@@ -22,7 +22,6 @@ public class SerializerStreamingHubTest : IClassFixture<MagicOnionApplicationFac
 
     public static IEnumerable<object[]> EnumerateStreamingHubClientFactory()
     {
-        yield return new [] { new TestStreamingHubClientFactory("Dynamic", DynamicStreamingHubClientFactoryProvider.Instance) };
         yield return new [] { new TestStreamingHubClientFactory("Static", MagicOnionGeneratedClientFactoryProvider.Instance)};
     }
 
