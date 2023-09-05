@@ -36,7 +36,7 @@ public class ServerStreamingTest
                     _ => Status.DefaultSuccess,
                     _ => Metadata.Empty,
                     _ => { },
-                    default);
+                    default!);
             });
         var client = MagicOnionClient.Create<IServerStreamingTestService>(callInvokerMock);
 
@@ -78,7 +78,7 @@ public class ServerStreamingTest
                     _ => Status.DefaultSuccess,
                     _ => Metadata.Empty,
                     _ => { },
-                    default);
+                    default!);
             });
         var client = MagicOnionClient.Create<IServerStreamingTestService>(callInvokerMock);
 
@@ -120,7 +120,7 @@ public class ServerStreamingTest
                     _ => Status.DefaultSuccess,
                     _ => Metadata.Empty,
                     _ => { },
-                    default);
+                    default!);
             });
         var client = MagicOnionClient.Create<IServerStreamingTestService>(callInvokerMock);
 
@@ -162,7 +162,7 @@ public class ServerStreamingTest
                     _ => Status.DefaultSuccess,
                     _ => Metadata.Empty,
                     _ => { },
-                    default);
+                    default!);
             });
         var client = MagicOnionClient.Create<IServerStreamingTestService>(callInvokerMock);
 

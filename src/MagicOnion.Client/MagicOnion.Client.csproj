@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
@@ -14,7 +14,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client" Version="2.56.0-pre1" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.57.0-pre1" />
   </ItemGroup>
   
   <ItemGroup>

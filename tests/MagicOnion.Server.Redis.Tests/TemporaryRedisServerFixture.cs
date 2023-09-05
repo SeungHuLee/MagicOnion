@@ -7,7 +7,7 @@ namespace MagicOnion.Server.Redis.Tests;
 
 public sealed class TemporaryRedisServerFixture : IAsyncLifetime
 {
-    const string redisImage = "redis:7.0";
+    const string redisImage = "redis:7.2.0";
 
     const ushort redisPort = 6379;
 
