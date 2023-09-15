@@ -1,15 +1,7 @@
 using Grpc.Net.Client;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicOnion.Client;
 using MagicOnion.Integration.Tests.Generated;
 using MagicOnion.Server;
-using MagicOnion.Serialization;
-using Google.Protobuf.WellKnownTypes;
 
 namespace MagicOnion.Integration.Tests;
 

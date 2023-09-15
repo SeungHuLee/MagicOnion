@@ -1,9 +1,7 @@
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 using MagicOnion.Integration.Tests.Generated;
-using MagicOnion.Serialization;
 using MagicOnion.Server;
 using MagicOnion.Server.Hubs;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace MagicOnion.Client.Tests;
 
 public class ClientFilterTest
@@ -68,7 +70,7 @@ public class ClientFilterTest
 
     class ClientFilterTestRequestHeaders : IClientFilter
     {
-        public ValueTask<ResponseContext> SendAsync(RequestContext context, Func<RequestContext, ValueTask<ResponseContext>> next)
+        public ValueTask<ResponseContext> SendAsync([NotNull] RequestContext context, Func<RequestContext, ValueTask<ResponseContext>> next)
         {
             context.CallOptions.Headers.Add("x-header-1", "valueA");
             context.CallOptions.Headers.Add("x-header-2", "valueB");

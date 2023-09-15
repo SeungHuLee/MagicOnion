@@ -1,7 +1,6 @@
 using MagicOnion.Serialization;
 using MagicOnion.Server.Diagnostics;
 using MagicOnion.Server.Hubs;
-using MessagePack;
 using Microsoft.Extensions.Options;
 
 namespace MagicOnion.Server.Redis;

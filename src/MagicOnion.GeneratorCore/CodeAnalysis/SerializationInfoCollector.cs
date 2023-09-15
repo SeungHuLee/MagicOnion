@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using MagicOnion.Generator.Internal;
-using static MagicOnion.Generator.CodeAnalysis.SerializationInfoCollector;
 
 namespace MagicOnion.Generator.CodeAnalysis;
 

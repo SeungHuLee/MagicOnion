@@ -2,7 +2,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using MagicOnion.Serialization;
 using MagicOnion.Server.Diagnostics;
-using MessagePack;
 
 namespace MagicOnion.Server.Hubs;
 

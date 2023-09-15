@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using MessagePack;
 using MessagePack.Formatters;
 
@@ -9,7 +7,7 @@ namespace MagicOnion
     // T2 ~ T15
     // NOTE: Blazor WebAssembly (AOT) does not support more than 16 generic type parameters.
 
-    
+
     [MessagePackObject]
     [StructLayout(LayoutKind.Auto)]
     public struct DynamicArgumentTuple<T1, T2>

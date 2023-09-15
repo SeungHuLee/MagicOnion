@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using ConsoleAppFramework;
 using MagicOnion.Generator.Internal;
 
 namespace MagicOnion.Generator;

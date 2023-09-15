@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Grpc.Net.Client;
 using MagicOnion.Client;
 using Microsoft.AspNetCore.Mvc.Testing;
-using NSubstitute;
 
 namespace MagicOnion.Server.Redis.Tests;
 
@@ -53,6 +52,7 @@ public class RedisGroupFunctionalTest : IClassFixture<MagicOnionApplicationFacto
         var receiver1 = Substitute.For<IRedisGroupFunctionalTestHubReceiver>();
         var client1 = await StreamingHubClient.ConnectAsync<IRedisGroupFunctionalTestHub, IRedisGroupFunctionalTestHubReceiver>(channel1, receiver1);
         await client1.JoinAsync("group-1");
+
         // Client-2 on Server-2
         var httpClient2 = factory2.CreateDefaultClient();
         var channel2 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient2 });
@@ -75,12 +75,14 @@ public class RedisGroupFunctionalTest : IClassFixture<MagicOnionApplicationFacto
     {
         // Arrange
         var groupName = nameof(RemoveMemberFromInMemoryGroup_CounterKeyIsNotDeleted);
+
         // Client-1 on Server-1
         var httpClient1 = factory.CreateDefaultClient();
         var channel1 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient1 });
         var receiver1 = Substitute.For<IRedisGroupFunctionalTestHubReceiver>();
         var client1 = await StreamingHubClient.ConnectAsync<IRedisGroupFunctionalTestHub, IRedisGroupFunctionalTestHubReceiver>(channel1, receiver1);
         await client1.JoinAsync(groupName);
+
         // Client-2 on Server-2
         var httpClient2 = factory2.CreateDefaultClient();
         var channel2 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient2 });
@@ -103,18 +105,21 @@ public class RedisGroupFunctionalTest : IClassFixture<MagicOnionApplicationFacto
     {
         // Arrange
         var groupName = nameof(RemoveMemberFromInMemoryGroup_KeepSubscription);
+
         // Client-1 on Server-1
         var httpClient1 = factory.CreateDefaultClient();
         var channel1 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient1 });
         var receiver1 = Substitute.For<IRedisGroupFunctionalTestHubReceiver>();
         var client1 = await StreamingHubClient.ConnectAsync<IRedisGroupFunctionalTestHub, IRedisGroupFunctionalTestHubReceiver>(channel1, receiver1);
         await client1.JoinAsync(groupName);
+
         // Client-2 on Server-2
         var httpClient2 = factory2.CreateDefaultClient();
         var channel2 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient2 });
         var receiver2 = Substitute.For<IRedisGroupFunctionalTestHubReceiver>();
         var client2 = await StreamingHubClient.ConnectAsync<IRedisGroupFunctionalTestHub, IRedisGroupFunctionalTestHubReceiver>(channel2, receiver2);
         await client2.JoinAsync(groupName);
+
         // Client-3 on Server-2 (same as Client-2)
         var httpClient3 = factory2.CreateDefaultClient();
         var channel3 = GrpcChannel.ForAddress("http://localhost", new GrpcChannelOptions() { HttpClient = httpClient3 });

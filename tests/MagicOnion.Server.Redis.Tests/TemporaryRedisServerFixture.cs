@@ -6,13 +6,11 @@ namespace MagicOnion.Server.Redis.Tests;
 
 public sealed class TemporaryRedisServerFixture : IAsyncLifetime
 {
-    const ushort redisPort = 6379;
-
     readonly RedisContainer container = new RedisBuilder().Build();
 
     public string GetConnectionString()
     {
-        return $"{container.Hostname}:{container.GetMappedPublicPort(redisPort)}";
+        return container.GetConnectionString();
     }
 
     Task IAsyncLifetime.InitializeAsync()

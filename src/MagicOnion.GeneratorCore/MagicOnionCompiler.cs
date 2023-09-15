@@ -9,7 +9,6 @@ using MagicOnion.Generator.CodeGen;
 using MagicOnion.Generator.Utils;
 using MagicOnion.Generator.CodeGen.Extensions;
 using MagicOnion.Generator.Internal;
-using System.Collections.Generic;
 
 namespace MagicOnion.Generator;
 

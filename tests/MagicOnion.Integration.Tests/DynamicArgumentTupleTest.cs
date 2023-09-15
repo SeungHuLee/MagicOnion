@@ -1,8 +1,5 @@
-using MagicOnion.Client;
 using Grpc.Net.Client;
 using MagicOnion.Server;
-using Xunit.Abstractions;
-using MagicOnion.Serialization;
 using MagicOnion.Integration.Tests.Generated;
 
 namespace MagicOnion.Integration.Tests;

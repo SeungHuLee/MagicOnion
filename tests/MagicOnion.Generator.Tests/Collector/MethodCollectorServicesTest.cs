@@ -1,6 +1,5 @@
 using MagicOnion.Generator.CodeAnalysis;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Xunit.Abstractions;
 
 namespace MagicOnion.Generator.Tests.Collector;

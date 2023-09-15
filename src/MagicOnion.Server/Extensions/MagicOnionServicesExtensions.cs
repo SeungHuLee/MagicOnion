@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using Grpc.AspNetCore.Server.Model;
 using MagicOnion.Server;

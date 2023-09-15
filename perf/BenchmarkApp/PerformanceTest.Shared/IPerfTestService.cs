@@ -1,8 +1,6 @@
 using MagicOnion;
 using MessagePack;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Runtime;
 using MemoryPack;
 
 namespace PerformanceTest.Shared;

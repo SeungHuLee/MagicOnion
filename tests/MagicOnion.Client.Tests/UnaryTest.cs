@@ -1,6 +1,4 @@
-using Grpc.Core;
 using MagicOnion.Internal;
-using NSubstitute;
 
 namespace MagicOnion.Client.Tests;
 

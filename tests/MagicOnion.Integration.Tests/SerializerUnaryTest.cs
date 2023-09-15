@@ -1,5 +1,4 @@
 using Grpc.Net.Client;
-using MagicOnion.Client;
 using MagicOnion.Integration.Tests.Generated;
 using MagicOnion.Serialization;
 using MagicOnion.Server;

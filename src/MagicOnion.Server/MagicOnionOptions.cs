@@ -1,4 +1,3 @@
-using MessagePack;
 using MagicOnion.Server.Filters;
 using MagicOnion.Serialization;
 
