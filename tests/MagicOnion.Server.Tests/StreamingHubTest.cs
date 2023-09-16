@@ -433,10 +433,7 @@ public class MoreCheckHubTest : IEmptyReceiver, IDisposable, IClassFixture<Serve
     {
         client = await StreamingHubClient.ConnectAsync<IMoreCheckHub, IEmptyReceiver>(channel, this);
 
-        var ex = Assert.Throws<RpcException>(() =>
-        {
-            client.ReceiveExceptionAsync().GetAwaiter().GetResult();
-        });
+        RpcException ex = await Assert.ThrowsAsync<RpcException>(async () => await client.ReceiveExceptionAsync());
 
         ex.StatusCode.Should().Be(StatusCode.Internal);
         logger.WriteLine(ex.ToString());
@@ -449,10 +446,7 @@ public class MoreCheckHubTest : IEmptyReceiver, IDisposable, IClassFixture<Serve
     {
         client = await StreamingHubClient.ConnectAsync<IMoreCheckHub, IEmptyReceiver>(channel, this);
 
-        var ex = Assert.Throws<RpcException>(() =>
-        {
-            client.StatusCodeAsync().GetAwaiter().GetResult();
-        });
+        var ex = await Assert.ThrowsAsync<RpcException>(async () => await client.StatusCodeAsync());
 
         ex.StatusCode.Should().Be((StatusCode)99);
         logger.WriteLine(ex.Status.Detail);

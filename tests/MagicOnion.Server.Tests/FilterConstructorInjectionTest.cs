@@ -33,38 +33,43 @@ public class FilterConstructorInjectionTest
     }
 
     [Fact]
-    public void TypeFilterForClassTest()
+    public async Task TypeFilterForClassTest()
     {
-        Assert.Throws<RpcException>(() => client.A().GetAwaiter().GetResult()).Status.Detail
-            .Should().Be("ConstructorInjectedFilterAttribute");
+        RpcException a = await Assert.ThrowsAsync<RpcException>(async () => await client.A());
+
+        a.Status.Detail.Should().Be("ConstructorInjectedFilterAttribute");
     }
 
     [Fact]
-    public void TypeFilterForMethodTest()
+    public async Task TypeFilterForMethodTest()
     {
-        Assert.Throws<RpcException>(() => client.A().GetAwaiter().GetResult()).Status.Detail
-            .Should().Be("ConstructorInjectedFilterAttribute");
+        RpcException a = await Assert.ThrowsAsync<RpcException>(async () => await client.A());
+
+        a.Status.Detail.Should().Be("ConstructorInjectedFilterAttribute");
     }
 
     [Fact]
-    public void TypeFilterWithArgumentsForMethodTest()
+    public async Task TypeFilterWithArgumentsForMethodTest()
     {
-        Assert.Throws<RpcException>(() => client.C().GetAwaiter().GetResult()).Status.Detail
-            .Should().Be("ConstructorInjectedFilterAttributeConstructorInjectedFilter3Attributefoo987654");
+        RpcException c = await Assert.ThrowsAsync<RpcException>(async () => client.C());
+
+        c.Status.Detail.Should().Be("ConstructorInjectedFilterAttributeConstructorInjectedFilter3Attributefoo987654");
     }
 
     [Fact]
-    public void ServiceFilterForMethodTest()
+    public async Task ServiceFilterForMethodTest()
     {
-        Assert.Throws<RpcException>(() => client.D().GetAwaiter().GetResult()).Status.Detail
-            .Should().Be("ConstructorInjectedFilterAttributeServiceFilterForMethodTestFilterAttribute");
+        RpcException d = await Assert.ThrowsAsync<RpcException>(async () => await client.D());
+
+        d.Status.Detail.Should().Be("ConstructorInjectedFilterAttributeServiceFilterForMethodTestFilterAttribute");
     }
 
     [Fact]
-    public void FilterFactoryTest()
+    public async Task FilterFactoryTest()
     {
-        Assert.Throws<RpcException>(() => client.E().GetAwaiter().GetResult()).Status.Detail
-            .Should().Be("ConstructorInjectedFilterAttributeFilterFactoryTestFilterAttributeHogemoge");
+        RpcException e = await Assert.ThrowsAsync<RpcException>(async () => await client.E());
+
+        e.Status.Detail.Should().Be("ConstructorInjectedFilterAttributeFilterFactoryTestFilterAttributeHogemoge");
     }
 }
 

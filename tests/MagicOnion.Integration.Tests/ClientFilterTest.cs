@@ -137,7 +137,7 @@ public class AppendHeaderFilter : IClientFilter
 {
     public async ValueTask<ResponseContext> SendAsync(RequestContext context, Func<RequestContext, ValueTask<ResponseContext>> next)
     {
-        var header = context.CallOptions.Headers;
+        var header = context.CallOptions.Headers!;
         header.Add("x-foo", "abcdefg");
         header.Add("x-bar", "hijklmn");
 

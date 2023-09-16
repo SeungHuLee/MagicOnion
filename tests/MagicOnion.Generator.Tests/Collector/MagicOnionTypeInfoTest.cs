@@ -206,7 +206,7 @@ public class MagicOnionTypeInfoTest
         var fullName = typeInfo.FullName;
         var genericArguments = typeInfo.GenericArguments;
         fullName.Should().Be("global::System.Collections.Generic.Dictionary<global::System.String, global::System.Int32>");
-        genericArguments.Should().BeEquivalentTo(MagicOnionTypeInfo.Create("System", "String"), MagicOnionTypeInfo.CreateValueType("System", "Int32"));
+        genericArguments.Should().BeEquivalentTo([MagicOnionTypeInfo.Create("System", "String"), MagicOnionTypeInfo.CreateValueType("System", "Int32")]);
     }
 
     [Fact]
@@ -223,7 +223,7 @@ public class MagicOnionTypeInfoTest
         var fullName = typeInfo.FullName;
         var genericArgumentsNested = typeInfo.GenericArguments[1].GenericArguments;
         fullName.Should().Be("global::System.Collections.Generic.Dictionary<global::System.String, global::System.Tuple<global::System.Double, global::System.Byte>>");
-        genericArgumentsNested.Should().BeEquivalentTo(MagicOnionTypeInfo.CreateValueType("System", "Double"), MagicOnionTypeInfo.CreateValueType("System", "Byte"));
+        genericArgumentsNested.Should().BeEquivalentTo([MagicOnionTypeInfo.CreateValueType("System", "Double"), MagicOnionTypeInfo.CreateValueType("System", "Byte")]);
     }
 
     [Fact]
@@ -677,7 +677,7 @@ public class MagicOnionTypeInfoTest
         // Act
         var types = typeInfo.EnumerateDependentTypes().ToArray();
         // Assert
-        types.Should().BeEquivalentTo(MagicOnionTypeInfo.CreateFromType<int>());
+        types.Should().BeEquivalentTo([MagicOnionTypeInfo.CreateFromType<int>()]);
     }
     
     [Fact]
@@ -688,7 +688,7 @@ public class MagicOnionTypeInfoTest
         // Act
         var types = typeInfo.EnumerateDependentTypes().ToArray();
         // Assert
-        types.Should().BeEquivalentTo(MagicOnionTypeInfo.CreateFromType<DayOfWeek>());
+        types.Should().BeEquivalentTo([MagicOnionTypeInfo.CreateFromType<DayOfWeek>()]);
     }    
 
     [Fact]
@@ -699,7 +699,7 @@ public class MagicOnionTypeInfoTest
         // Act
         var types = typeInfo.EnumerateDependentTypes().ToArray();
         // Assert
-        types.Should().BeEquivalentTo(MagicOnionTypeInfo.CreateFromType<DayOfWeek[]>(), MagicOnionTypeInfo.CreateFromType<DayOfWeek>());
+        types.Should().BeEquivalentTo([MagicOnionTypeInfo.CreateFromType<DayOfWeek[]>(), MagicOnionTypeInfo.CreateFromType<DayOfWeek>()]);
     }
 
     [Fact]
@@ -710,7 +710,7 @@ public class MagicOnionTypeInfoTest
         // Act
         var types = typeInfo.EnumerateDependentTypes().ToArray();
         // Assert
-        types.Should().BeEquivalentTo(MagicOnionTypeInfo.CreateFromType<int>(), MagicOnionTypeInfo.CreateFromType<string>());
+        types.Should().BeEquivalentTo([MagicOnionTypeInfo.CreateFromType<int>(), MagicOnionTypeInfo.CreateFromType<string>()]);
     }
     
     [Fact]
@@ -722,12 +722,15 @@ public class MagicOnionTypeInfoTest
         var types = typeInfo.EnumerateDependentTypes().ToArray();
         // Assert
         types.Should().BeEquivalentTo(
-            MagicOnionTypeInfo.CreateFromType<int>(),
-            MagicOnionTypeInfo.CreateFromType<Dictionary<string, Task<byte[]>>>(),
-            MagicOnionTypeInfo.CreateFromType<string>(),
-            MagicOnionTypeInfo.CreateFromType<Task<byte[]>>(),
-            MagicOnionTypeInfo.CreateFromType<byte[]>(),
-            MagicOnionTypeInfo.CreateFromType<byte>());
+            [
+                MagicOnionTypeInfo.CreateFromType<int>(),
+                MagicOnionTypeInfo.CreateFromType<Dictionary<string, Task<byte[]>>>(),
+                MagicOnionTypeInfo.CreateFromType<string>(),
+                MagicOnionTypeInfo.CreateFromType<Task<byte[]>>(),
+                MagicOnionTypeInfo.CreateFromType<byte[]>(),
+                MagicOnionTypeInfo.CreateFromType<byte>()
+            ]
+        );
     }
 
     [Fact]

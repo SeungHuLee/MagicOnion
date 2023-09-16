@@ -160,15 +160,18 @@ public class FilterTest : IClassFixture<ServerFixture<FilterTester>>
 
 
     [Fact]
-    public void Filter()
+    public async Task Filter()
     {
-        Assert.Throws<RpcException>(() => client.A().GetAwaiter().GetResult()).Status.Detail
+        RpcException a = await Assert.ThrowsAsync<RpcException>(async () => await client.A());
+        a.Status.Detail
             .Should().Be("DumpFilter, SimpleFilter1, MoreThanFilter3 : MoreThanFilter3, Begin, Finally, MoreThanFilter3msg, put-class, SimpleFilter1, Begin, Finally");
 
-        Assert.Throws<RpcException>(() => client.B().GetAwaiter().GetResult()).Status.Detail
+        RpcException b = await Assert.ThrowsAsync<RpcException>(async () => await client.B());
+        b.Status.Detail
             .Should().Be("DumpFilter, MultiFilter2, MoreThanFilter3, SimpleFilter1 : MoreThanFilter3, Begin, Finally, MoreThanFilter3msg, put-class, MultiFilter2, Begin, Finally, MultiFilter2xyz, (99, 30, 4595), SimpleFilter1, Begin, Finally");
 
-        Assert.Throws<RpcException>(() => client.C().GetAwaiter().GetResult()).Status.Detail
+        RpcException c = await Assert.ThrowsAsync<RpcException>(async () => await client.C());
+        c.Status.Detail
             .Should().Be("DumpFilter, SimpleFilter1, MoreThanFilter3 : MoreThanFilter3, Begin, Catch, Finally, MoreThanFilter3msg, put-class, SimpleFilter1, Begin, Catch, Finally");
     }
 }

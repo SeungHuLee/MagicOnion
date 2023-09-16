@@ -107,12 +107,9 @@ public class ReturnStatusTest : IClassFixture<ServerFixture<ReturnStatus>>
     //}
 
     [Fact]
-    public void CheckCustomThrow()
+    public async Task CheckCustomThrow()
     {
-        var ex = Assert.Throws<RpcException>(() =>
-        {
-            client.CustomThrow(123).GetAwaiter().GetResult();
-        });
+        RpcException ex = await Assert.ThrowsAsync<RpcException>(async () => await client.CustomThrow(123));
 
         ex.Status.StatusCode.Should().Be((StatusCode)123);
     }
