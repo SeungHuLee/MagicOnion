@@ -20,7 +20,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
+        <PackageReference Include="MessagePack" Version="2.5.124" />
         <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
     </ItemGroup>
 

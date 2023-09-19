@@ -43,11 +43,17 @@ internal static class PseudoCompilation
         var targetMetadataLocations = locations.Select(Path.GetFullPath)
             .Concat(GetStandardReferences())
             .Distinct()
-            .Where(x => !(x.Contains("MonoBleedingEdge") || x.Contains("2.0.0")))
+            .Where(x => !(x.Contains("MonoBleedingEdge") || x.Contains("2.1.0")))
             // .NET (Core) SDK libraries are prioritized.
-            .OrderBy(x => x.Contains(".NETCore") ? 0 : 1)
+            .OrderBy(x => x.Contains(".NETCore") ? 1 : 0)
             // We expect the NuGet package path to contain the version. :)
             .ThenByDescending(x => x);
+
+        // DEBUG
+        foreach (string location in targetMetadataLocations)
+        {
+            logger.Trace($"{location}");
+        }
 
         var netCoreBundledAssemblies = new[]
         {
@@ -304,7 +310,7 @@ internal static class PseudoCompilation
                 {
                     var sharedRoot = Path.GetDirectoryName(Path.Combine(csProjRoot, item.Attribute("Project").Value));
                     logger.Trace($"[{nameof(PseudoCompilation)}] Import project '{sharedRoot}'");
-                    foreach (var file in IterateCsFileWithoutBinObj(Path.GetDirectoryName(sharedRoot)))
+                    foreach (var file in IterateCsFileWithoutBinObj(sharedRoot))
                     {
                         source.Add(file);
                     }
@@ -409,17 +415,17 @@ internal static class PseudoCompilation
     private static IEnumerable<string> NetstandardFallBack(string originalTargetFramework)
     {
         yield return originalTargetFramework;
-        if (originalTargetFramework.Contains("netcoreapp"))
-        {
-            yield return "netcoreapp3.1";
-            yield return "netcoreapp3.0";
-            yield return "netcoreapp2.1";
-            yield return "netcoreapp2.0";
-        }
+        //if (originalTargetFramework.Contains("netcoreapp"))
+        //{
+        //    yield return "netcoreapp3.1";
+        //    yield return "netcoreapp3.0";
+        //    yield return "netcoreapp2.1";
+        //    yield return "netcoreapp2.0";
+        //}
 
         yield return "netstandard2.1";
         yield return "netstandard2.0";
-        yield return "netstandard1.6";
+        //yield return "netstandard1.6";
     }
 
     private static IEnumerable<(string id, string version)> ResolveNuGetDependency(string nugetPackagesPath, string includePath, string packageVersion, string targetFramework)

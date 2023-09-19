@@ -35,7 +35,7 @@ namespace TempProject
         {
             AdditionalCsProjectContent = @"
                    <ItemGroup>
-                    <PackageReference Update=""MessagePackAnalyzer"" Version=""2.2.85"">
+                    <PackageReference Update=""MessagePackAnalyzer"" Version=""2.5.124"">
                       <PrivateAssets>all</PrivateAssets>
                       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
                     </PackageReference>
@@ -196,7 +196,7 @@ namespace TempProject
         sourceProjectCompilation.GetDiagnostics().Should().NotContain(x => x.Severity == DiagnosticSeverity.Error);
         outputCompilation.GetCompilationErrors().Should().BeEmpty();
     }
-    
+
     [Fact]
     public async Task ImplicitUsings_PropertyGroup_Disable()
     {
@@ -257,7 +257,7 @@ namespace TempProject
         var options = TemporaryProjectWorkareaOptions.Default with
         {
             ImplicitUsings = false,
-            Usings = new []
+            Usings = new[]
             {
                 (Namespace: "System", Static: false, Remove: false),
                 (Namespace: "System.Collections.Generic", Static: false, Remove: false),
@@ -296,7 +296,7 @@ namespace TempProject
             new MagicOnionGeneratorTestOutputLogger(testOutputHelper),
             CancellationToken.None
         );
-        
+
         // Generate codes and get a compilation of the project with generated code.
         var compiler = new MagicOnionCompiler(new MagicOnionGeneratorTestOutputLogger(testOutputHelper), CancellationToken.None);
         await compiler.GenerateFileAsync(
@@ -314,14 +314,14 @@ namespace TempProject
         sourceProjectCompilation.GetDiagnostics().Should().NotContain(x => x.Severity == DiagnosticSeverity.Error);
         outputCompilation.GetCompilationErrors().Should().BeEmpty();
     }
-    
+
     [Fact]
     public async Task GlobalUsingsInProject_Remove()
     {
         var options = TemporaryProjectWorkareaOptions.Default with
         {
             ImplicitUsings = false,
-            Usings = new []
+            Usings = new[]
             {
                 (Namespace: "System", Static: false, Remove: false),
                 (Namespace: "System.Collections.Generic", Static: false, Remove: false),
@@ -366,5 +366,71 @@ namespace TempProject
 
         // Assert
         sourceProjectCompilation.GetDiagnostics().Should().Contain(x => x.Severity == DiagnosticSeverity.Error); // the compilation should have some errors.
+    }
+
+    [Fact]
+    public async Task SharedProject()
+    {
+        var options = TemporaryProjectWorkareaOptions.Default with
+        {
+            AdditionalCsProjectContent = @"
+                  <Import Project=""..\Shared\SubDir\MyShared.projitems"" Label=""Shared"" />
+                ",
+        };
+        using var tempWorkspace = TemporaryProjectWorkarea.Create(options);
+        var sharedDir = Path.GetFullPath(Path.Combine(tempWorkspace.ProjectDirectory, "..", "Shared", "SubDir"));
+        Directory.CreateDirectory(sharedDir);
+        // <tempdir>/Shared/SubDir/MyShared.projeitems
+        File.WriteAllText(Path.Combine(sharedDir, "MyShared.projeitems"), "<Project></Project>");
+        // <tempdir>/Shared/SubDir/IMyService.cs
+        File.WriteAllText(Path.Combine(sharedDir, "IMyService.cs"), """
+            using System;
+            using System.Threading.Tasks;
+            using MessagePack;
+            using MagicOnion;
+            
+            namespace TempProject
+            {
+                public interface IMyService : IService<IMyService>
+                {
+                    UnaryResult<int> A();
+                }
+            }
+        """);
+        // <tempdir>/Shared/IYetAnotherMyService.cs (This file should be ignored.)
+        File.WriteAllText(Path.Combine(Path.GetDirectoryName(sharedDir), "IYetAnotherMyService.cs"), """
+            using System;
+            using System.Threading.Tasks;
+            using MessagePack;
+            using MagicOnion;
+            
+            namespace TempProject
+            {
+                public interface IYetAnotherMyService : IService<IYetAnotherMyService>
+                {
+                    UnaryResult<int> A();
+                }
+            }
+        """);
+
+        var compiler = new MagicOnionCompiler(new MagicOnionGeneratorTestOutputLogger(testOutputHelper), CancellationToken.None);
+        await compiler.GenerateFileAsync(
+            tempWorkspace.CsProjectPath,
+            Path.Combine(tempWorkspace.OutputDirectory, "Generated.cs"),
+            true,
+            "TempProject.Generated",
+            "",
+            "MessagePack.Formatters",
+            SerializerType.MessagePack
+        );
+
+        // NOTE: GetOutputCompilation only refers under the ProjectDirectory and OutputDirectory.
+        Directory.Move(sharedDir, Path.Combine(tempWorkspace.ProjectDirectory, "Shared"));
+
+        var outputCompilation = tempWorkspace.GetOutputCompilation();
+        outputCompilation.GetCompilationErrors().Should().BeEmpty();
+
+        var symbols = outputCompilation.GetNamedTypeSymbolsFromGenerated();
+        symbols.Should().NotContain(x => x.Name.Contains("YetAnotherMyService"));
     }
 }
