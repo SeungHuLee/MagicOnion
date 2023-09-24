@@ -1,0 +1,166 @@
+Created at 2023-09-19 오후 6:11:23
+========================================
+MagicOnion 5.1.8+0661620feed17595ba2df325a1f0e559d3ccf951
+grpc-dotnet 2.57.0+7733c07c69c98506e9f89ec68cd0fb33ecd1bcb4
+MessagePack 2.5.124+55b46296f8
+MemoryPack 1.9.16
+
+Configurations:
+Build Configuration: Release
+FrameworkDescription: .NET 8.0.0-rc.1.23419.4
+OSDescription: Microsoft Windows 10.0.22621
+OSArchitecture: X64
+ProcessArchitecture: X64
+IsServerGC: False
+ProcessorCount: 32
+Debugger.IsAttached: False
+
+========================================
+Server Information:
+MagicOnion 5.1.8+0661620feed17595ba2df325a1f0e559d3ccf951
+grpc-dotnet 2.57.0+7733c07c69c98506e9f89ec68cd0fb33ecd1bcb4
+MessagePack 2.5.124+55b46296f8
+MemoryPack 1.9.16
+Build Configuration: Release
+FrameworkDescription: .NET 8.0.0-rc.1.23419.4
+OSDescription: Microsoft Windows 10.0.22621
+OSArchitecture: X64
+ProcessArchitecture : X64
+IsServerGC: True
+ProcessorCount: 32
+========================================
+Scenario     : All
+Url          : http://localhost:7079
+Warmup       : 10 s
+Duration     : 10 s
+Streams      : 10
+Channels     : 10
+Serialization: MemoryPack
+========================================
+Scenario           : Unary
+Round              : 0
+Requests per Second: 350661.896 rps
+Duration           : 10.0160298 s
+Total Requests     : 3512240 requests
+========================================
+Scenario           : UnaryComplex
+Round              : 0
+Requests per Second: 321963.372 rps
+Duration           : 10.0092659 s
+Total Requests     : 3222617 requests
+========================================
+Scenario           : UnaryLargePayload1K
+Round              : 0
+Requests per Second: 297163.763 rps
+Duration           : 10.0000349 s
+Total Requests     : 2971648 requests
+========================================
+Scenario           : UnaryLargePayload2K
+Round              : 0
+Requests per Second: 265175.869 rps
+Duration           : 10.0148366 s
+Total Requests     : 2655693 requests
+========================================
+Scenario           : UnaryLargePayload4K
+Round              : 0
+Requests per Second: 224193.960 rps
+Duration           : 10.0014068 s
+Total Requests     : 2242255 requests
+========================================
+Scenario           : UnaryLargePayload8K
+Round              : 0
+Requests per Second: 169439.579 rps
+Duration           : 10.0031233 s
+Total Requests     : 1694925 requests
+========================================
+Scenario           : UnaryLargePayload16K
+Round              : 0
+Requests per Second: 122976.213 rps
+Duration           : 10.0051544 s
+Total Requests     : 1230396 requests
+========================================
+Scenario           : UnaryLargePayload32K
+Round              : 0
+Requests per Second: 72142.830 rps
+Duration           : 10.0099067 s
+Total Requests     : 722143 requests
+========================================
+Scenario           : UnaryLargePayload64K
+Round              : 0
+Requests per Second: 34053.453 rps
+Duration           : 10.0023337 s
+Total Requests     : 340614 requests
+========================================
+Scenario           : StreamingHub
+Round              : 0
+Requests per Second: 581515.139 rps
+Duration           : 10.0044515 s
+Total Requests     : 5817740 requests
+========================================
+Scenario           : StreamingHubComplex
+Round              : 0
+Requests per Second: 517947.876 rps
+Duration           : 10.0160986 s
+Total Requests     : 5187817 requests
+========================================
+Scenario           : StreamingHubLargePayload1K
+Round              : 0
+Requests per Second: 432600.892 rps
+Duration           : 10.0003215 s
+Total Requests     : 4326148 requests
+========================================
+Scenario           : StreamingHubLargePayload2K
+Round              : 0
+Requests per Second: 376727.897 rps
+Duration           : 10.0047701 s
+Total Requests     : 3769076 requests
+========================================
+Scenario           : StreamingHubLargePayload4K
+Round              : 0
+Requests per Second: 286991.451 rps
+Duration           : 10.0151032 s
+Total Requests     : 2874249 requests
+========================================
+Scenario           : StreamingHubLargePayload8K
+Round              : 0
+Requests per Second: 187847.851 rps
+Duration           : 10.0056508 s
+Total Requests     : 1879540 requests
+========================================
+Scenario           : StreamingHubLargePayload16K
+Round              : 0
+Requests per Second: 116205.978 rps
+Duration           : 10.0087622 s
+Total Requests     : 1163078 requests
+========================================
+Scenario           : StreamingHubLargePayload32K
+Round              : 0
+Requests per Second: 59452.076 rps
+Duration           : 10.0015178 s
+Total Requests     : 594611 requests
+========================================
+Scenario           : StreamingHubLargePayload64K
+Round              : 0
+Requests per Second: 22021.513 rps
+Duration           : 10.0178859 s
+Total Requests     : 220609 requests
+========================================
+Scenario	Requests/s (1)	Requests/s (Avg)
+Unary	350661.896	350661.896
+UnaryComplex	321963.372	321963.372
+UnaryLargePayload1K	297163.763	297163.763
+UnaryLargePayload2K	265175.869	265175.869
+UnaryLargePayload4K	224193.960	224193.960
+UnaryLargePayload8K	169439.579	169439.579
+UnaryLargePayload16K	122976.213	122976.213
+UnaryLargePayload32K	72142.830	72142.830
+UnaryLargePayload64K	34053.453	34053.453
+StreamingHub	581515.139	581515.139
+StreamingHubComplex	517947.876	517947.876
+StreamingHubLargePayload1K	432600.892	432600.892
+StreamingHubLargePayload2K	376727.897	376727.897
+StreamingHubLargePayload4K	286991.451	286991.451
+StreamingHubLargePayload8K	187847.851	187847.851
+StreamingHubLargePayload16K	116205.978	116205.978
+StreamingHubLargePayload32K	59452.076	59452.076
+StreamingHubLargePayload64K	22021.513	22021.513

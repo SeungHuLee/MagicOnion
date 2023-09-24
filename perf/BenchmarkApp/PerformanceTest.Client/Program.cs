@@ -21,7 +21,7 @@ async Task Main(
     [Option("r")]string? report = null,
     uint rounds = 1,
     [Option("v")]bool verbose = false,
-    SerializationType serialization = SerializationType.MessagePack
+    SerializationType serialization = SerializationType.MemoryPack
 )
 {
     var config = new ScenarioConfiguration(url, warmup, duration, streams, channels, verbose);

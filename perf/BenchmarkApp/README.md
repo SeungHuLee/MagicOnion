@@ -3,7 +3,7 @@
 ## Usage
 ### Server
 ```
-dotnet run -c Release --
+dotnet run -c Release --serialization MemoryPack
 ```
 
 ### Client

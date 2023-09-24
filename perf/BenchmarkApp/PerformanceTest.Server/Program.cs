@@ -9,7 +9,6 @@ if (Array.IndexOf(args, "--serialization") is var index and > -1 && args[index +
 }
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Logging.ClearProviders();
 
 // Additional configuration is required to successfully run gRPC on macOS.
