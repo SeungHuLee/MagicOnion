@@ -112,7 +112,9 @@ public class SerializationInfoCollector
                 }
 
                 logger.Trace($"[{nameof(SerializationInfoCollector)}] Array type '{type.FullName}'");
-                context.Generics.Add(new GenericSerializationInfo(type.FullName, mapper.MapArray(type), typeWithDirectives.IfDirectives));
+
+                var (formatterName, formatterConstructorArgs) = mapper.MapArray(type);
+                context.Generics.Add(new GenericSerializationInfo(type.FullName, formatterName, formatterConstructorArgs, typeWithDirectives.IfDirectives));
                 mapper.MapArray(type);
             }
             else if (type.HasGenericArguments)
@@ -123,10 +125,10 @@ public class SerializationInfoCollector
                     continue;
                 }
 
-                if (mapper.TryMapGeneric(type, out var formatterName))
+                if (mapper.TryMapGeneric(type, out var formatterName, out var formatterConstructorArgs))
                 {
                     logger.Trace($"[{nameof(SerializationInfoCollector)}] Generic type '{type.FullName}' (IfDirectives={string.Join(", ", typeWithDirectives.IfDirectives)})");
-                    context.Generics.Add(new GenericSerializationInfo(type.FullName, formatterName, typeWithDirectives.IfDirectives));
+                    context.Generics.Add(new GenericSerializationInfo(type.FullName, formatterName, formatterConstructorArgs, typeWithDirectives.IfDirectives));
                 }
             }
         }
@@ -143,6 +145,7 @@ public class SerializationInfoCollector
             new GenericSerializationInfo(
                 serializationInfo.FullName,
                 serializationInfo.FormatterName,
+                serializationInfo.FormatterConstructorArgs,
                 serializationInfo.IfDirectiveConditions.Concat(serializationInfoCandidate.IfDirectiveConditions).ToArray()
             )
         );
